@@ -1,0 +1,132 @@
+@font-face {
+    font-family: 'Stack Sans Notch';
+    src: url('/fonts/StackSansNotch.ttf') format('truetype');
+}
+
+body {
+    width: 100vw !important;
+    overflow: hidden;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #081145;
+}
+
+img {
+    width: 100vw !important;
+    overflow: hidden;
+}
+
+.page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    position: relative;
+    display: inline-block;
+    --background-scale: 1;
+    --front-scale: 1;
+    overflow: hidden;
+}
+
+.container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at center,
+        transparent 0%,
+        transparent 50%,
+        rgba(0, 0, 0, 0.7) 100%
+    );
+    pointer-events: none;
+    z-index: 10;
+    mix-blend-mode: multiply;
+    backdrop-filter: blur(5px);
+}
+
+.background-image {
+    transition: transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform-origin: center;
+    transform: 
+        translate(var(--background-translate-x, 0), var(--background-translate-y, 0))
+        scale(var(--background-scale, 0.8))
+        rotate(var(--background-rotate, 0));
+    will-change: transform;
+}
+
+.front-image {
+    position: absolute;
+    inset: 0;
+    object-fit: contain;
+    transition: transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform-origin: center;
+    transform: 
+        translate(var(--front-translate-x, 0), var(--front-translate-y, 0))
+        scale(var(--front-scale, 1))
+        rotate(var(--front-rotate, 0));
+    will-change: transform;
+}
+
+.title {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-family: 'Stack Sans Notch', sans-serif;
+    font-size: 5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    z-index: 15;
+    text-align: center;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.1));
+}
+
+.description {
+    position: absolute;
+    top: calc(20% + 10rem);
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255, 255, 255, 0.9);
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1.4rem;
+    text-align: center;
+    max-width: 1200px;
+    line-height: 1.6;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    z-index: 15;
+    letter-spacing: 0.5px;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.05));
+}
+
+.button-container {
+    position: absolute;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    text-align: center;
+}
+
+.see-more-button {
+    font-family: 'Stack Sans Notch', sans-serif;
+    padding: 12px 32px;
+    font-size: 1.2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.see-more-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
